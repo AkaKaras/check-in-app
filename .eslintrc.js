@@ -2,6 +2,8 @@ module.exports = {
 	env: {
 		browser: true,
 		es6: true,
+		jest: true,
+		node: true,
 	},
 	settings: {
 		react: {
@@ -13,19 +15,21 @@ module.exports = {
 		'eslint:recommended',
 		'plugin:react/recommended',
 	],
+
 	overrides: [
 		{
-			env: {
-				jest: true,
-				node: true,
-			},
 			files: ['.eslintrc.{js,cjs}', '**/*.spec.js', '**/*.spec.jsx'],
 			parserOptions: {
 				sourceType: 'script',
 			},
 		},
 	],
+	parser: '@typescript-eslint/parser',
 	parserOptions: {
+		requireConfigFile: false,
+		babelOptions: {
+			presets: ['@babel/preset-react'],
+		},
 		ecmaVersion: 'latest',
 		sourceType: 'module',
 	},
@@ -45,7 +49,7 @@ module.exports = {
 				printWidth: 80,
 				endOfLine: 'lf',
 				singleQuote: true,
-				tabWidth: 2,
+				tabWidth: 1,
 				indentStyle: 'space',
 				useTabs: true,
 				trailingComma: 'es5',
